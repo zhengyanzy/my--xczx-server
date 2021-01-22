@@ -171,6 +171,8 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter(CustomUserAuthenticationConverter customUserAuthenticationConverter) {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+
+        //方式一
         KeyPair keyPair = new KeyStoreKeyFactory
                 (keyProperties.getKeyStore().getLocation(), keyProperties.getKeyStore().getSecret().toCharArray())
                 .getKeyPair(keyProperties.getKeyStore().getAlias(),keyProperties.getKeyStore().getPassword().toCharArray());
@@ -178,6 +180,9 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
         //配置自定义的CustomUserAuthenticationConverter
         DefaultAccessTokenConverter accessTokenConverter = (DefaultAccessTokenConverter) converter.getAccessTokenConverter();
         accessTokenConverter.setUserTokenConverter(customUserAuthenticationConverter);
+
+//        方式二
+//        converter.setSigningKey("密钥");
         return converter;
     }
 
