@@ -21,7 +21,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 /**
  * Sprint Security 配置
  */
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)//激活方法上的PreAuthorize注解
 @Configuration
 @EnableWebSecurity
 //@Order(-1)  //如果配置了，验证用户名和client_id 都会调用UserDetailsServiceImpl方式
