@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 生产JWT令牌的内容
+ * 生成JwtAccessTokenConverter(TokenEnhancer)的时候将CustomUserAuthenticationConverter配置进去
  */
 @Component
 public class CustomUserAuthenticationConverter extends DefaultUserAuthenticationConverter {

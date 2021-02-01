@@ -165,7 +165,7 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
      * 资源服务器也需要一个解码 Token 令牌的类 JwtAccessTokenConverter
      * JwtTokenStore 依赖这个类进行编码以及解码，因此授权服务以及资源服务都需要配置这个转换类
      *
-     * 服务启动的时候执行
+     * JwtAccessTokenConverter需要配置到 AuthorizationServerEndpointsConfigurer
      */
     @SuppressWarnings("all")
     @Bean
@@ -179,10 +179,11 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
         converter.setKeyPair(keyPair);
         //配置自定义的CustomUserAuthenticationConverter
         DefaultAccessTokenConverter accessTokenConverter = (DefaultAccessTokenConverter) converter.getAccessTokenConverter();
+        //配置DefaultUserAuthenticationConverter
         accessTokenConverter.setUserTokenConverter(customUserAuthenticationConverter);
 
-//        方式二
-//        converter.setSigningKey("密钥");
+        //方式二
+        //converter.setSigningKey("密钥");
         return converter;
     }
 
