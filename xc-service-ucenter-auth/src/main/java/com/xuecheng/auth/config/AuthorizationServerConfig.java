@@ -166,6 +166,7 @@ class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
      * JwtTokenStore 依赖这个类进行编码以及解码，因此授权服务以及资源服务都需要配置这个转换类
      *
      * JwtAccessTokenConverter需要配置到 AuthorizationServerEndpointsConfigurer
+     * JwtAccessTokenConverter需要配置到 tokenStore
      */
     @SuppressWarnings("all")
     @Bean
